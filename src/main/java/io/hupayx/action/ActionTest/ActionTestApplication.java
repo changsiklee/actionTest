@@ -8,6 +8,7 @@ public class ActionTestApplication {
 
 	public static void main(String[] args) {
 		System.out.println("start");
+		System.out.println("ActionTestApplication main method execute.");
 		SpringApplication.run(ActionTestApplication.class, args);
 	}
 
