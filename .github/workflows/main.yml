@@ -30,4 +30,4 @@ jobs:
           AWS_ACCESS_KEY_ID: 'AKIAUUUX46ZBY5BSP3GV'
           AWS_SECRET_ACCESS_KEY: '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'
         run:
-          aws s3 cp --recursive --region ap-northeast-2 dist s3://github-actions-test-hpx
+          aws s3 cp --recursive --region ap-northeast-2 . s3://github-actions-test-hpx
