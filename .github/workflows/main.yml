@@ -24,7 +24,10 @@ jobs:
           working-directory: .
         run: ./gradlew build
         working-directory: ${{ env.working-directory }}
-   
+
+      - name: ls run
+        run: ls -al
+
       - name: deploy
         env:
           AWS_ACCESS_KEY_ID: 'AKIAUUUX46ZBY5BSP3GV'
