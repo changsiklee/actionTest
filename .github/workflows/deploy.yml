@@ -59,8 +59,8 @@ jobs:
           AWS_SECRET_ACCESS_KEY: qtpOmV7yJv47r1gKtHNzhu7XZmLVgtwrlihOCLOu
         run: |
           aws deploy create-deployment \
-          --application-name github-actions-test-app \
-          --deployment-group-name github-actions-test-app-group \
+          --application-name deploy-test-app \
+          --deployment-group-name deploy-test-app-group \
           --file-exists-behavior OVERWRITE \
           --s3-location bucket=github-actions-codedeploy-test,bundleType=zip,key=github-actions-test.zip \
           --region ap-northeast-2
