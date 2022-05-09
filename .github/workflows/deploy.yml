@@ -26,6 +26,15 @@ jobs:
           working-directory: .
         run: ./gradlew build
         working-directory: ${{ env.working-directory }}
+        
+      - name: Make Directory
+        run: mkdir -p deploy
+
+      - name: Copy Jar
+        run: cp ./build/libs/*.jar ./deploy
+
+      - name: Make zip file
+        run: zip -r ./github-actions-test.zip ./deploy
     
       - name: Transfer to S3 for serving static
         uses: jakejarvis/s3-sync-action@master
@@ -33,10 +42,10 @@ jobs:
           args: --acl public-read --follow-symlinks --delete
         env:
           AWS_S3_BUCKET: github-actions-test3
-          AWS_ACCESS_KEY_ID: '$AWS_IAM_MANAGER_KEY_ID'
-          AWS_SECRET_ACCESS_KEY: '$AWS_IAM_MANAGER_SECRET_ACCESS_KEY'
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_KEY }}
           AWS_REGION: ap-northeast-2
-          SOURCE_DIR: 'dist'
+          SOURCE_DIR: 'deploy'
 
       - name: CodeDeploy
         run: aws deploy create-deployment --application-name github-actions-test-app --deployment-group-name github-actions-test-app-group --s3-location bucket=github-actions-test3,key=github-actions-test.zip,bundleType=zip
