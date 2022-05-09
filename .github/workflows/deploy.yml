@@ -42,7 +42,7 @@ jobs:
       - name: Make zip file
         run: zip -r ./github-actions-test.zip ./deploy
     
-      - name: Deploy
+      - name: S3 Deploy
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: AKIAUUUX46ZB6QE5JKWW
@@ -52,5 +52,17 @@ jobs:
       - name: Upload to S3
         run: aws s3 cp --region ap-northeast-2 --acl private ./github-actions-test.zip s3://github-actions-codedeploy-test/
 
-      - name: CodeDeploy
-        run: aws deploy create-deployment --application-name github-actions-test-app --deployment-group-name github-actions-test-app-group --s3-location bucket=github-actions-codedeploy-test,key=github-actions-test.zip,bundleType=zip
+      # Deploy
+      - name: Deploy
+        env:
+          AWS_ACCESS_KEY_ID: AKIAUUUX46ZB6QE5JKWW
+          AWS_SECRET_ACCESS_KEY: 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
+        run: |
+          aws deploy create-deployment \
+          --application-name github-actions-test-app \
+          --deployment-group-name github-actions-test-app-group \
+          --file-exists-behavior OVERWRITE \
+          --s3-location bucket=github-actions-codedeploy-test,bundleType=zip,key=github-actions-test.zip \
+          --region ap-northeast-2
+      # - name: CodeDeploy
+      #   run: aws deploy create-deployment --application-name github-actions-test-app --deployment-group-name github-actions-test-app-group --s3-location bucket=github-actions-codedeploy-test,key=github-actions-test.zip,bundleType=zip
