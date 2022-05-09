@@ -42,8 +42,8 @@ jobs:
           args: --acl public-read --follow-symlinks --delete
         env:
           AWS_S3_BUCKET: github-actions-test3
-          AWS_ACCESS_KEY_ID: AKIAUUUX46ZB3PBYT57R
-          AWS_SECRET_ACCESS_KEY: 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
+          AWS_ACCESS_KEY_ID: AKIAUUUX46ZB6QE5JKWW
+          AWS_SECRET_ACCESS_KEY: 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
           AWS_REGION: ap-northeast-2
           SOURCE_DIR: 'deploy'
 
