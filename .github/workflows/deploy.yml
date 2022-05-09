@@ -41,11 +41,11 @@ jobs:
         with:
           args: --acl public-read --follow-symlinks --delete
         env:
-          AWS_S3_BUCKET: github-actions-test3
+          AWS_S3_BUCKET: github-actions-codedeploy-test
           AWS_ACCESS_KEY_ID: AKIAUUUX46ZB6QE5JKWW
           AWS_SECRET_ACCESS_KEY: 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
           AWS_REGION: ap-northeast-2
           SOURCE_DIR: 'deploy'
 
       - name: CodeDeploy
-        run: aws deploy create-deployment --application-name github-actions-test-app --deployment-group-name github-actions-test-app-group --s3-location bucket=github-actions-test3,key=github-actions-test.zip,bundleType=zip
+        run: aws deploy create-deployment --application-name github-actions-test-app --deployment-group-name github-actions-test-app-group --s3-location bucket=github-actions-codedeploy-test,key=github-actions-test.zip,bundleType=zip
