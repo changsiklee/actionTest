@@ -31,17 +31,18 @@ jobs:
       - name: Make Directory for deliver
         run: mkdir -p deploy
 
-      # Jar 파일 Copy
       - name: Copy Jar
         run: cp ./build/libs/*.jar ./deploy
 
-      # appspec.yml Copy
+      - name: Copy Scripts
+        run: cp ./scripts/*.sh ./deploy
+
       - name: Copy appspec
         run: cp appspec.yml ./deploy/
 
       - name: Make zip file
         run: zip -r ./github-actions-test.zip ./deploy
-    
+
       - name: S3 Deploy
         uses: aws-actions/configure-aws-credentials@v1
         with:
