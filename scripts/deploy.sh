@@ -1,6 +1,6 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-REPOSITORY=/home/ec2-user/apps
+REPOSITORY=/home/ec2-user/apps/deploy
 
 echo "> 현재 구동 중인 애플리케이션 pid 확인"
 
