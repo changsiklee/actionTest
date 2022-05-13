@@ -65,5 +65,3 @@ jobs:
           --file-exists-behavior OVERWRITE \
           --s3-location bucket=github-actions-codedeploy-test,bundleType=zip,key=github-actions-test.zip \
           --region ap-northeast-2
-      # - name: CodeDeploy
-      #   run: aws deploy create-deployment --application-name github-actions-test-app --deployment-group-name github-actions-test-app-group --s3-location bucket=github-actions-codedeploy-test,key=github-actions-test.zip,bundleType=zip
