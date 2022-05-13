@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 REPOSITORY=/home/ec2-user/apps/deploy
 
