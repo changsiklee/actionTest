@@ -1,12 +1,9 @@
 #!/usr/bin/env bash
 
 REPOSITORY=/home/ec2-user/apps/deploy
-
-echo "> Determine which application pid is currently running."
-
 CURRENT_PID=$(pgrep -fl Action | grep java | awk '{print $1}')
 
-echo "the currently running application pid: $CURRENT_PID"
+echo "The currently running application pid: $CURRENT_PID"
 
 if [ -z "$CURRENT_PID" ]; then
   echo "No applications are currently running, so do not kill."
