@@ -13,7 +13,7 @@ else
   sleep 5
 fi
 
-echo "> Deploy a new application"
+echo "> Deploy a new application "
 
 JAR_NAME=$(ls -tr $REPOSITORY/*.jar | tail -n 1)
 
